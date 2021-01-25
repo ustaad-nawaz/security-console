@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.2.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.2.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.2.4/firebase-performance.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body ng-app="security-console">
+    <div layout="column" style="height:100%;" ng-cloak ng-controller="baseCTRL">
+      <section layout="row" flex>
+        <md-sidenav
+          class="md-sidenav-left"
+          md-component-id="left"
+          md-is-locked-open="$mdMedia('gt-md')"
+          md-whiteframe="4">
+    
+          <md-toolbar>
+              <h1 class="md-toolbar-tools">Navigation</h1>
+          </md-toolbar>
+          <md-content>
+            <md-list>
+                <md-list-item ng-class="{notActive: selectedNav!=navItem.name}" ng-repeat="navItem in navItems" md-colors="{background: 'primary-700'}" ng-click="navigate(navItem)">
+                <md-icon md-svg-icon="{{navItem.icon}}"></md-icon>
+                <span flex> {{navItem.label}} </span>
+                </md-list-item>
+            </md-list>
+          </md-content>
+          </md-sidenav>
+          <div layout="column" ng-cloak flex>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <md-button class="md-icon-button" aria-label="Settings" hide-gt-md ng-click="openSideNav()">
+                <md-icon md-svg-icon="app/asset/img/icon/menu.svg"></md-icon>
+              </md-button>
+        
+              <h2 flex md-truncate>{{selectedNav.label}}</h2>
+        
+              <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="app/asset/img/icon/more_vert.svg"></md-icon>
+              </md-button>
+            </div>
+          </md-toolbar>
+          <md-content flex layout-padding>
+            <ng-view flex></ng-view>
+          </md-content>
+        </div>
+      </section>
+    </div>
+
+    <!-- Node Libraries -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+
+    <!-- Main Script -->
+    <script src="app.js"></script>
+
+    <!-- Controllers -->
+    <script src="controller/base.js"></script>
+    <script src="controller/dashboard.js"></script>
+    <script src="controller/guard.js"></script>
+
+    <!-- Models -->
+    <script src="model/helper.js"></script>
+
+    <!-- Server API -->
+  </body>
+</html>

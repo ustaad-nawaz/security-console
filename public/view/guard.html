@@ -1,0 +1,48 @@
+<md-card ng-init="startFrom=0; pageSize=5">
+    <md-card-header>
+        <md-button ng-click="sorter=(sorter=='number' ? '-number':'number')">
+            <md-icon md-svg-src="app/asset/img/icon/asc.svg" ng-if="sorter=='number'"></md-icon>
+            <md-icon md-svg-src="app/asset/img/icon/desc.svg" ng-if="sorter=='-number'"></md-icon> 
+            Guard Number 
+        </md-button>
+        <md-button ng-click="sorter=(sorter=='name' ? '-name':'name')">
+            <md-icon md-svg-src="app/asset/img/icon/asc.svg" ng-if="sorter=='name'"></md-icon>
+            <md-icon md-svg-src="app/asset/img/icon/desc.svg" ng-if="sorter=='-name'"></md-icon> 
+            Guard Name 
+        </md-button>
+        <md-button ng-click="sorter=(sorter=='postCode' ? '-postCode':'postCode')">
+            <md-icon md-svg-src="app/asset/img/icon/asc.svg" ng-if="sorter=='postCode'"></md-icon>
+            <md-icon md-svg-src="app/asset/img/icon/desc.svg" ng-if="sorter=='-postCode'"></md-icon> 
+            Guard Post Code 
+        </md-button>
+        <input ng-model="searchedGuard"/>
+    </md-card-header>
+    <md-card-content>
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="guard in guards | orderBy: sorter | startFrom: startFrom*pageSize | limitTo:pageSize | filter: searchedGuard" ng-click="null">
+                <md-icon md-svg-icon="app/asset/img/icon/work.svg"></md-icon>
+                <div class="md-list-item-text" layout="column">
+                    <div layout="row" layout-align="start center">
+                        <p> {{("000"+guard.number).slice(-3)}} </p>
+                        <h3 layout-padding> {{guard.name}} </h3>
+                        <p> {{guard.postCode}} </p>
+                    </div>
+                    <p> {{guard.address.street}} {{school.address.suburb}} </p>
+                </div>
+                <md-button class="md-secondary md-icon-button" ng-click="" aria-label="update">
+                    <md-icon md-svg-icon="app/asset/img/icon/edit.svg"></md-icon>
+                </md-button>
+        </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-menu md-offset="0 -7">
+            <md-button aria-label="Open PageSize Menu" ng-click="$mdMenu.open($event)"> Show Limit: {{pageSize}} </md-button>
+            <md-menu-content>
+                <md-menu-item ng-repeat="item in [5,10,15,20,'All']">
+                    <md-button ng-click="setPageSize(item)"> {{item}} </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </md-card-actions>
+</md-card>

@@ -1,0 +1,27 @@
+{
+  "name": "security-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ustaad-nawaz/security-console.git"
+  },
+  "author": "NeoMax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ustaad-nawaz/security-console/issues"
+  },
+  "homepage": "https://github.com/ustaad-nawaz/security-console#readme",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-animate": "^1.8.2",
+    "angular-aria": "^1.8.2",
+    "angular-material": "^1.2.2",
+    "angular-messages": "^1.8.2",
+    "angular-route": "^1.8.2"
+  }
+}
